@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Item from "./Item";
 import styled from 'styled-components';
 import { ItemButton } from "./Item";
 
-const Shop = styled.ul`
+const ShopList = styled.ul`
   list-style: none;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -38,8 +38,9 @@ const DelButton = styled.button`
   }
 `
 export default function ItemsList(props) {
+  
   return (
-    <Shop>
+    <ShopList>
       {props.items.map((item) => (
         <ItemList key={item.id}>
           <Item info={item} />
@@ -51,6 +52,6 @@ export default function ItemsList(props) {
           </DelButton>
         </ItemList>
       ))}
-    </Shop>
+    </ShopList>
   );
 }

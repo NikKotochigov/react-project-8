@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 
 const ItemInfo = styled.div`
@@ -46,9 +46,18 @@ const ItemTitle = styled.h2`
 `
 
 export default function Item(props) {
-  const [total, setTotal] = useState(0);
 
   const { info } = props;
+
+  const [total, setTotal] = useState(() => {
+    const saved = localStorage.getItem(String(info.id));
+    return Number.parseInt(saved, 10) || 0;
+  })
+
+  useEffect(() => {
+    const key = String(info.id);
+    localStorage.setItem(key, total)
+  }, [total])
 
   function handleAddClick() {
     setTotal(total + 1);

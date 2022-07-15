@@ -1,4 +1,3 @@
-import './App.css';
 import Shop from './Shop';
 import styled from 'styled-components';
 
